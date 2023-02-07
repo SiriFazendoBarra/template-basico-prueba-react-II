@@ -1,5 +1,11 @@
+import { Link } from "react-router-dom";
+import BuyButton from "./BuyButton";
+
+
 export default function Card(pizza) {
-  console.log(pizza)
+
+
+
   return (
     <article className="mb-2 col-12 col-md-6 col-xl-3">
       <div className="card">
@@ -10,31 +16,28 @@ export default function Card(pizza) {
         />
         <div className="card-body">
           <h2>
-            <b>{pizza.item.name}</b>
+            <b>{pizza.item.name[0].toUpperCase()}{pizza.item.name.substring(1)}</b>
           </h2>
           <h6>Ingrediente</h6>
           <ul>
-            {pizza.item.map((item)=> (
-              <li>{item}</li>
-          ))}
+            {pizza.item.ingredients.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
-          
+
           <h5>
             <b>Precio: ${pizza.item.price}</b>
           </h5>
           <div className="d-flex gap-2">
-            <a
-              href="/cart"
-              className="btn btn-outline-primary"
-            >
-              Comprar
-            </a>
-            <a
-              href="/pizzas/1"
+            <BuyButton pizza={pizza.item} />
+            <Link
+              to={`/pizzas/${pizza.item.id}`}
               className="btn btn-outline-danger"
             >
+
               Ver detalles
-            </a>
+            </Link>
+
           </div>
         </div>
       </div>

@@ -1,26 +1,31 @@
+import { Link } from "react-router-dom";
+import { useCartContext } from "../context/CartContext";
+
 export default function Navbar() {
+
+  const {suma} = useCartContext()
   return (
     <nav className="navbar navbar-dark bg-dark">
       <div className="container">
-        <a
+        <Link
           className="navbar-brand"
-          href="/"
+          to="/"
         >
           MamaMía 😋
-        </a>
+        </Link>
         <div className="d-flex gap-2">
-          <a
+          <Link
             className="btn btn-outline-light"
-            href="/pizzas"
+            to="/pizzas"
           >
             Pizzas
-          </a>
-          <a
+          </Link>
+          <Link
             className="btn btn-outline-info me-2"
-            href="/cart"
+            to="/cart"
           >
-            Cart: $3.99
-          </a>
+            Cart: ${suma}
+          </Link>
         </div>
       </div>
     </nav>

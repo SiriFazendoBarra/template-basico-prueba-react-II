@@ -5,10 +5,20 @@ import "./index.css";
 
 import { BrowserRouter } from "react-router-dom";
 
+import PizzasProvider from "./context/PizzasContext";
+import CartProvider from "./context/CartContext";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <CartProvider>
+      <PizzasProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PizzasProvider>
+    </CartProvider>
   </React.StrictMode>
+
+
+
 );
